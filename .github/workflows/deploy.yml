@@ -22,6 +22,7 @@ jobs:
             cd /application
             mv .env /home/.env.bkp
 
+
       - name: "Copy files to server 1"
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -41,7 +42,7 @@ jobs:
           key: ${{ secrets.SSH_KEY_VPS }}
           script: |
             cd /application
-            composer install --no-dev --no-progress -a
+            composer install --no-dev --no-progress --no-interaction -a
             php artisan optimize
             chown -R www-data:www-data .
             php artisan storage:link
