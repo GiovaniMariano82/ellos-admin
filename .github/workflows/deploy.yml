@@ -17,7 +17,6 @@ jobs:
           host: ${{ secrets.SSH_IP_VPS1 }}
           username: ${{ secrets.SSH_USER_VPS }}
           password: ${{ secrets.SSH_PASSWORD_VPS }}
-          key: ${{ secrets.SSH_KEY_VPS }}
           script: |
             cd /application
             mv .env /home/.env.bkp
@@ -29,7 +28,6 @@ jobs:
           host: ${{ secrets.SSH_IP_VPS1 }}
           username: ${{ secrets.SSH_USER_VPS }}
           password: ${{ secrets.SSH_PASSWORD_VPS }}
-          key: ${{ secrets.SSH_KEY_VPS }}
           source: "."
           target: "/application"
 
@@ -39,7 +37,6 @@ jobs:
           host: ${{ secrets.SSH_IP_VPS1 }}
           username: ${{ secrets.SSH_USER_VPS }}
           password: ${{ secrets.SSH_PASSWORD_VPS }}
-          key: ${{ secrets.SSH_KEY_VPS }}
           script: |
             cd /application
             composer install --no-dev --no-progress --no-interaction -a
