@@ -14,18 +14,17 @@ jobs:
       - name: "Copy .env to server 1"
         uses: appleboy/ssh-action@v1.1.0
         with:
-          host: ${{ secrets.SSH_IP_VPS1 }}
+          host: ${{ secrets.SSH_IP_VPS2 }}
           username: ${{ secrets.SSH_USER_VPS }}
           password: ${{ secrets.SSH_PASSWORD_VPS }}
           script: |
             cd /application
             mv .env /home/.env.bkp
 
-
       - name: "Copy files to server 1"
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: ${{ secrets.SSH_IP_VPS1 }}
+          host: ${{ secrets.SSH_IP_VPS2 }}
           username: ${{ secrets.SSH_USER_VPS }}
           password: ${{ secrets.SSH_PASSWORD_VPS }}
           source: "."
@@ -34,7 +33,7 @@ jobs:
       - name: "Build and deploy to server 1"
         uses: appleboy/ssh-action@v1.1.0
         with:
-          host: ${{ secrets.SSH_IP_VPS1 }}
+          host: ${{ secrets.SSH_IP_VPS2 }}
           username: ${{ secrets.SSH_USER_VPS }}
           password: ${{ secrets.SSH_PASSWORD_VPS }}
           script: |
